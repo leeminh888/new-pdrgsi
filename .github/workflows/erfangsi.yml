@@ -14,9 +14,9 @@ on:
     types: [started]
     
 env:
-  ROM: ExtendedUI
+  ROM: MIUi
   TZ: America/Sao_Paulo
-  MIR: bit
+  MIR: gof
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
             sudo -E apt-get -qq install git openjdk-8-jdk wget
        
        - name: Clone ErfanGSI Source Code
-         run: git clone https://github.com/yukosky/ErfanGSIs -b runner
+         run:git clone --recurse-submodules https://github.com/Treble-Experience/ErfanGSIs-Hitsuki.git ErfanGSIs
        
        - name: Setting up ErfanGSI requirements
          run: |
@@ -41,7 +41,7 @@ jobs:
        
        - name: Download Firmware & Generate GSI & Zip and Upload
          run:  |
-               sudo ./ErfanGSIs/url2GSI.sh https://ufpr.dl.sourceforge.net/project/extendedui/polaris/ExtendedUI_1.2.1_polaris-10.0-20200621-2134-OFFICIAL.zip Generic:ExtendedUI
+               sudo ./ErfanGSIs/url2GSI.sh https://bigota.d.miui.com/V12.0.1.0.PEMEUXM/miui_ANDROMEDAEEAGlobal_V12.0.1.0.PEMEUXM_9e4961bf09_9.0.zip MIUI
                mkdir final
                
                export date2=`date +%Y%m%d%H%M`
